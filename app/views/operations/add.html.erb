@@ -1,0 +1,185 @@
+<html>
+<head>
+<style type="css/text">
+body
+{
+	background-color:#001212;
+	}
+</style>
+<script language="javascript">
+var s=0,s1=0,k=0,x,m,g=1,l=0;
+
+function callMethod(a)
+{
+document.getElementById("text1").value="";
+k=parseInt(a);
+if(g==1)
+{
+s=s*10+k/g;
+}
+else
+{
+l=k/g;
+g=g*10;
+s=s+l;
+}
+document.getElementById("text1").value=s;
+}
+function  callequal()
+{
+switch(m)
+{
+case "+":
+s1=s1+s;
+document.getElementById("text1").value=s1;
+m=0;
+s=0;
+break;
+case "-":
+s1=s1-s;
+document.getElementById("text1").value=s1;
+m=0;
+s=0
+break;
+case "*":
+s1=s1*s;
+document.getElementById("text1").value=s1;
+m=0;
+s=0;
+break;
+case "/":
+s1=s1/s;
+document.getElementById("text1").value=s1;
+m=0;
+s=0;
+break;
+
+}
+}
+function calladd(x)
+{
+m=x;
+s1=s1+s;
+document.getElementById("text1").value=s1;
+s=0;
+g=1;
+}
+function callsin()
+{
+var sine;
+sine=Math.sin(s);
+document.getElementById("text1").value=sine;
+s=0;
+}
+function callcos()
+{
+var sine;
+sine=Math.cos(s);
+document.getElementById("text1").value=sine;
+s=0;
+}
+function calltan()
+{
+var sine;
+sine=Math.tan(s);
+document.getElementById("text1").value=sine;
+s=0;
+}
+function calldot(x)
+{
+g=10;
+}
+function callsqrt()
+{
+var sine=0;
+sine=Math.sqrt(s)
+document.getElementById("text1").value=sine;
+}
+function callsub(x)
+{
+m=x;
+if (s1==0)
+s1=s1+s;
+else
+s1=s1-s;
+document.getElementById("text1").value=s1;
+s=0;
+g=1;
+}
+function callmul(x)
+{
+m=x;
+if(s1==0||s==0)
+s1=s1+s;
+else
+s1=s1*s;
+document.getElementById("text1").value=s1;
+s=0;
+g=1;
+}
+function calldiv(x)
+{
+m=x;
+if(s1==0||s==0)
+s1=s1+s;
+else
+s1=s1/s;
+document.getElementById("text1").value=s1;
+s=0;
+g=1;
+}
+function callclear()
+{
+document.getElementById("text1").value="";
+k=0;
+s1=0;
+s=0;
+g=1;
+}
+</script>
+</head>
+<body align="center">
+<table border="35" style="background-color:#001223; font-variant:small-caps;>
+<table style="font-weight: bold;" align="center">
+<tr>
+<td align="center" style="color: white; font-weight: bold;" colspan="20">Calculator</td>
+</tr>
+<tr>
+<td><%- form_for @cal do |f| %>
+<%= f.text_field:number1,:id=>"text1",:disabled => "true" %></td></tr>
+<%= @cal.username %>
+<%- end %>
+</table>
+<table style="font-weight: bold;"align="center" border="20" >
+<tr>
+<td><%= button_to_function "1", :id=>"1" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "2", :id=>"2" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "3", :id=>"3" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "4", :id=>"4" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "+", :id=>"+" ,:onclick=>"calladd(this.value)"%></td>
+<td><%= button_to_function "-", :id=>"-" ,:onclick=>"callsub(this.value)"%></td>
+<td><%= button_to_function "sin", :id=>"sin" ,:onclick=>"callsin()"%></td>
+</tr>
+<tr>
+<td><%= button_to_function "5", :id=>"5" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "6", :id=>"6" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "7", :id=>"7" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "8", :id=>"8" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "*", :id=>"*" ,:onclick=>"callmul(this.value)"%></td>
+<td><%= button_to_function "/" ,:id=>"/" ,:onclick=>"calldiv(this.value)"%></td>
+<td><%= button_to_function "cos", :id=>"cos" ,:onclick=>"callcos()"%></td>
+</tr>
+<tr>
+<td><%= button_to_function "9", :id=>"9" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "0", :id=>"0" ,:onclick=>"callMethod(this.value)"%></td>
+<td><%= button_to_function "=", :id=>" = " ,:onclick=>"callequal()"%></td>
+<td><%= button_to_function ".", :id=>"." ,:onclick=>"calldot(this.value)"%></td>
+<td><%= button_to_function "c", :id=>" c" ,:onclick=>"callclear()"%></td>
+<td><%= button_to_function "sqrt", :id=>" sqrt" ,:onclick=>"callsqrt()"%></td>
+<td><%= button_to_function "tan", :id=>"tan" ,:onclick=>"calltan()"%></td>
+</tr>
+</table>
+</table>
+</body>
+<%= link_to "Logout", logout_path, { :title => "Log out" }    %>
+</html>

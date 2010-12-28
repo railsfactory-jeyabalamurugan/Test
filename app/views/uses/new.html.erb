@@ -1,0 +1,19 @@
+<h1>Sign&nbsp;up&nbsp;as&nbsp;a&nbsp;new &nbsp;user</h1>
+<% @use.password = @use.password_confirmation = nil %>
+
+
+<%= form_for :use, :url => uses_path do |f| -%>
+<p><%= label_tag 'login' %>
+<%= f.text_field :login %></p>
+
+<p><%= label_tag 'email' %>
+<%= f.text_field :email %></p>
+
+<p><%= label_tag 'password' %>
+<%= f.password_field :password %></p>
+
+<p><%= label_tag 'password_confirmation', 'ConfirmPassword' %>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>

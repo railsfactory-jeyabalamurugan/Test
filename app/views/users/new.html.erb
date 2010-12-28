@@ -1,0 +1,9 @@
+<table>
+<%=form_for :user, :url=>users_create_path,:html=>{:multipart=>true} do |f|%>
+<tr><td><%=f.file_field :avatar%></td></tr>
+<tr><td><%=f.file_field :file%></td></tr>
+<tr><td><%=f.submit 'submit'%></td></tr>
+<%end%>
+</table>
+
+ 

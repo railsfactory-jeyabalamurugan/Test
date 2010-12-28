@@ -1,0 +1,5 @@
+
+ <%=link_to "click",  :action=>"edit"%>
+<%@user.each do |av|%>
+<br/><%= image_tag av.avatar.url(:thumb)%>&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag av.file.url(:thumb)%><br/>
+	<%end%>
